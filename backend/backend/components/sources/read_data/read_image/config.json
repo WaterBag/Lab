@@ -1,0 +1,23 @@
+{
+  "name": "读取图片文件",
+  "category": "read_data",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "required": true,
+      "name": "file_path",
+      "label": "文件夹或文件路径",
+      "default": null,
+      "desc": ""
+    }
+  ],
+  "inputConfig": [],
+  "outputConfig": [
+    {
+      "desc": "图片列表DataFrame(path,image)",
+      "name": "images",
+      "label": "图片DataFrame"
+    }
+  ]
+}

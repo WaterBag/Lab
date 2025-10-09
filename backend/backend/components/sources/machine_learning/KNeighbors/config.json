@@ -1,0 +1,82 @@
+{
+  "name": "K近邻",
+  "category": "machine_learning",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "desc": "数据集中作为X的列",
+      "required": true,
+      "name": "col_x",
+      "label": "特征列",
+      "default": null
+    },
+    {
+      "type": "str",
+      "desc": "数据集中作为Y的列",
+      "required": true,
+      "name": "col_y",
+      "label": "选择预测列",
+      "default": null
+    },
+    {
+      "type": "num",
+      "name": "k",
+      "required": false,
+      "default": 5,
+      "label": "K值",
+      "desc": ""
+    },
+    {
+      "label": "距离度量",
+      "name": "distance",
+      "type": "opt",
+      "default": 2,
+      "desc": "",
+      "required": false,
+      "options": [
+        {
+          "label": "欧氏距离",
+          "value": 2
+        },
+        {
+          "label": "曼哈顿距离",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "label": "分类决策规则",
+      "name": "rule",
+      "type": "opt",
+      "default": "uniform",
+      "desc": "",
+      "required": true,
+      "options": [
+        {
+          "label": "uniform",
+          "value": "uniform"
+        },
+        {
+          "label": "distance",
+          "value": "distance"
+        }
+      ]
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_1",
+      "desc": "DataFrame数据",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "训练后的k近邻模型",
+      "name": "knn",
+      "label": "KNN模型"
+    }
+  ]
+}

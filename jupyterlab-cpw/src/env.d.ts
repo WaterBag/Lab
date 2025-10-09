@@ -1,0 +1,21 @@
+/// <reference types="vite/client" />
+
+interface Window {
+
+  /** 所有CPW组件复用一份数据，把响应式数据直接保存到window，所有cpw页面都响应 */
+  __CPW_DATA: {
+    categories: import('vue').Ref<CPW.CellCategory[]>
+    categories_loading: import('vue').Ref<boolean>
+
+    bookmark_component_ids: import('vue').Ref<number[]>
+  }
+
+  __DS_DATA: {
+    queue: import('vue').Ref<DownloadTask[]>
+  }
+
+  __CPW_PID: number
+
+  // /** 标记当前激活的CPWWidget的id */
+  // __CURRENT_CPW_ID: string | null
+}

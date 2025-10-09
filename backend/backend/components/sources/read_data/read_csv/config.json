@@ -1,0 +1,39 @@
+{
+  "name": "读取csv文件",
+  "category": "read_data",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "required": true,
+      "name": "file_path",
+      "label": "文件路径",
+      "default": null,
+      "desc": ""
+    },
+    {
+      "label": "文件编码",
+      "name": "encoding",
+      "required": false,
+      "default": "utf-8",
+      "type": "str",
+      "desc": ""
+    },
+    {
+      "label": "分隔符",
+      "name": "sep",
+      "required": false,
+      "default": ",",
+      "type": "str",
+      "desc": ""
+    }
+  ],
+  "inputConfig": [],
+  "outputConfig": [
+    {
+      "desc": "CSV DataFrame",
+      "name": "table",
+      "label": "CSV DataFrame"
+    }
+  ]
+}

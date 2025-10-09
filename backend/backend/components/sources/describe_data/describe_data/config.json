@@ -1,0 +1,21 @@
+{
+  "name": "描述性统计",
+  "category": "describe_data",
+  "genre": "common",
+  "paramsConfig": [],
+  "inputConfig": [
+    {
+      "name": "in_1",
+      "desc": "DataFrame数据",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "数据描述DataFrame",
+      "name": "desc_data",
+      "label": "DataFrame的描述数据"
+    }
+  ]
+}

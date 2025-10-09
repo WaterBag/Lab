@@ -1,0 +1,64 @@
+{
+  "name": "图片转化",
+  "category": "data_preprocessing",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "label": "模式",
+      "name": "mode",
+      "type": "opt",
+      "default": "L",
+      "required": true,
+      "desc": "",
+      "options": [
+        {
+          "label": "1(黑白)",
+          "value": "1"
+        },
+        {
+          "label": "L(灰度)",
+          "value": "L"
+        },
+        {
+          "label": "P",
+          "value": "P"
+        },
+        {
+          "label": "RGB",
+          "value": "RGB"
+        },
+        {
+          "label": "RGBA",
+          "value": "RGBA"
+        },
+        {
+          "label": "CMYK",
+          "value": "CMYK"
+        }
+      ]
+    },
+    {
+      "label": "图片列",
+      "name": "image_col",
+      "type": "str",
+      "default": "image",
+      "required": true,
+      "desc": ""
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_images",
+      "desc": "Pillow图片对象DataFrame",
+      "required": true,
+      "label": "图片DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "Pillow图片对象DataFrame",
+      "name": "images",
+      "label": "图片DataFrame"
+    }
+  ]
+}

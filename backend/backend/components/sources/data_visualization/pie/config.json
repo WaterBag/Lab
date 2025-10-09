@@ -1,0 +1,46 @@
+{
+  "name": "饼图",
+  "category": "data_visualization",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "desc": "标签",
+      "required": true,
+      "name": "col_x",
+      "label": "标签",
+      "default": null
+    },
+    {
+      "type": "str",
+      "desc": "数据集中作为值的列",
+      "required": true,
+      "name": "col_y",
+      "label": "Y轴",
+      "default": null
+    },
+    {
+      "type": "str",
+      "desc": "",
+      "required": false,
+      "name": "title",
+      "label": "标题",
+      "default": "Pie Chart"
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "data_df",
+      "desc": "DataFrame数据",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "饼图",
+      "name": "plt",
+      "label": "饼图"
+    }
+  ]
+}

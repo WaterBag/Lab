@@ -1,0 +1,28 @@
+# General
+# ------------------------------------------------------------------------------
+USE_DOCKER=yes
+IPYTHONDIR=/app/.ipython
+# Redis
+# ------------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+
+# Celery
+# ------------------------------------------------------------------------------
+
+# Flower
+CELERY_FLOWER_USER=debug
+CELERY_FLOWER_PASSWORD=debug
+# Optional integrations
+DJANGO_DEBUG=True
+JUPYTERHUB_API_TOKEN=changeme-token
+JUPYTERHUB_HOST=http://localhost:8001
+JUPYTERHUB_COMMON_USER=local-user
+COS_SECRET_ID=dummy
+COS_SECRET_KEY=dummy
+COS_REGION=ap-shanghai
+COS_BUCKET_NAME=dummy-bucket
+EMAIL_HOST=smtp.exmail.qq.com
+EMAIL_PORT=465
+EMAIL_HOST_USER=service@example.com
+EMAIL_HOST_PASSWORD=dummy-password
+DJANGO_EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend

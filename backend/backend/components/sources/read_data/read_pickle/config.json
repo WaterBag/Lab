@@ -1,0 +1,23 @@
+{
+  "name": "读取pickle文件",
+  "category": "read_data",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "required": true,
+      "name": "file_path",
+      "label": "文件路径",
+      "desc": "",
+      "default": ""
+    }
+  ],
+  "inputConfig": [],
+  "outputConfig": [
+    {
+      "desc": "Pickle 对象",
+      "name": "pickle_data",
+      "label": "Pickle对象"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+/**
+ * 全局的字体相关配置，包括组件库字体等覆盖
+ */
+
+:root {
+  --jp-font-family: Inter, Arial, "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --td-font-family: var(--jp-font-family) !important;
+  --td-font-family-medium: var(--jp-font-family) !important;
+  --vxe-ui-font-family: var(--jp-font-family) !important;
+}
+
+:root,
+#app--jp-body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--jp-font-family);
+  font-size: 14px;
+  color: var(--td-text-color-primary);
+}

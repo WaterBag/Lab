@@ -1,0 +1,54 @@
+/**
+ * 通用的效果样式类名
+ */
+
+// .page-transitions-enter-active,
+// .page-transitions-leave-active {
+//   // transition: all 150ms;
+//   transition-property: opacity, transform;
+//   transition-duration: 150ms;
+// }
+// .page-transitions-enter-from,
+// .page-transitions-leave-to {
+//   opacity: 0;
+//   transform: translateY(8px);
+// }
+::view-transition-group(root) {
+  animation-duration: 200ms;
+}
+
+// 基础阴影
+.base-shadow {
+  box-shadow: 0 15px 20px 0 #4e6a950f;
+}
+
+// NuxtLink内不能再嵌套a标签，所以当需要NuxtLink展示为t-link样式时，可使用此类名
+.t-link-like {
+  color: #0052d9;
+  font-size: 14px;
+  line-height: 24px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.4em;
+  transition: text-decoration-color 0.2s linear;
+  &:hover {
+    text-decoration-color: #0052d9;
+  }
+}
+
+// hover放大元素
+.scale-effect {
+  transition: scale 300ms;
+  &:hover{
+    scale: 1.02;
+  }
+}
+
+// hover上移元素
+.y-effect {
+  transition: transform 300ms;
+  &:hover {
+    transform: translateY(-8px);
+  }
+}
+

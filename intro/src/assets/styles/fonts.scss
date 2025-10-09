@@ -1,0 +1,28 @@
+/**
+ * 全局的字体相关配置，包括组件库字体等覆盖
+ */
+
+:root {
+  --lab-font-family: Arial, "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  --td-font-family: var(--lab-font-family) !important;
+
+  font-size: 16px;
+  font-family: var(--lab-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: ui-monospace, monospace !important;
+  }
+}
+
+:root > body {
+  // font-size: 14px;
+  font-family: var(--lab-font-family);
+  color: rgba(0,0,0,0.9);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

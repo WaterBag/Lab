@@ -1,0 +1,160 @@
+/**
+ * 全局样式文件
+ */
+
+@import url('./fonts.scss');
+@import url('./patchs.scss');
+
+:root {
+  --border-color: #e7e7e7;
+
+  /**
+    --jp-app-height 指定为当前应用的最大可视高度 默认为100vh
+    --jp-app-width 指定为当前应用的最大可视宽度 默认为 100vw
+
+    当在微前端环境下, 当前子系统的可视区域受父应用限制, 此时使用还使用浏览器可视高度100vh为最大高度基准的话, 将会超出子应用期望的范围
+
+    所以使用运行时的css变量作为子应用的可视宽高基准, 当在微前端环境下, 所有css变量都可以被更改并直接影响样式表现
+
+    目前约定:
+    1.--jp-app-height与--jp-app-width可被父应用直接更改, 当父应用挂载当前子应用时, 会根据子应用渲染位置给该css变量赋预期值
+    2.micro-app环境下, 包裹子应用的web-component(<micro-app></micro-app>)也会指定宽高, 子应用可以为body设置100%的宽高即可作将body作为宽高基准(gf没用使用该方式)
+  */
+  --jp-app-height: 100vh;
+  --jp-app-width: 100vw;
+
+  --jp-nav-bar-height: 56px;
+  --jp-nav-bar-bg: #2c2c2c;
+  --jp-aside-width: 232px;
+  // --jp-footer-height: 24px; // 如果Layout有固定底部版权信息之类的话
+  --jp-footer-height: 0px;
+  
+  --jp-content-height: calc(var(--jp-app-height) - var(--jp-nav-bar-height) - var(--jp-footer-height));
+}
+
+:root,
+#app--jp-body {
+  min-height: 600px;
+}
+
+/**
+ * 此文件编写一些未分类的全局的类名，如工具类名
+ */
+
+// 让滚动容器的滚动条变成细的
+.--small-scroll {
+  @include small-scroll;
+}
+
+.flex-xy-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-y-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-x-center {
+  display: flex;
+  justify-content: center;
+}
+
+// t-card加上full-body类名自动铺满内容区高度
+.full-body.t-card {
+  display: flex;
+  flex-direction: column;
+
+  .t-card__body {
+    flex: 1;
+    height: 0;
+  }
+}
+
+// 给a标签设置为t-link的primary样式，可以直接用在router-link上（因为t-link无法使用前端路由， 懒得包一层router-link了）
+.t-link-like {
+  --color: #0052d9;
+  --hover-color: #0052d9;
+  color: var(--color);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.4em;
+  transition-property: text-decoration-color, color;
+  transition-duration: 200ms;
+  &:hover {
+    color: var(--hover-color);
+    text-decoration-color: var(--hover-color);
+  }
+}
+
+// 单行省略
+.ellipsis-1 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// 页面主标题
+.main-title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+// 页面小标题、表单小标题
+.tiny-title {
+  // font-size: 14px;
+  // line-height: 18px;
+  font-weight: 600;
+}
+
+// * ----------------------------- form边距改造 ----------------------------------
+/**
+ * 用于单行的行内布局表单上，让form-item忽略label-width，让label自动适配文本内容
+ * 不适用于多行的行内布局表单，因为多行时，同一列的表单项的label宽度需要对齐
+
+ * 把这个类名加到t-form上或t-form-item上生效
+ */
+.auto-form-label {
+  .t-form__label {
+    width: unset !important;
+    float: left;
+    min-height: unset;
+  }
+  .t-form__controls {
+    margin-left: unset !important;
+  }
+}
+
+/**
+ * 所有行内布局的表单项，label右边距默认改完16px，表单项之间边距改为16px
+ * 
+ * 用css变量进行覆盖（为了在业务代码中可以直接使用css变量再次覆盖）
+ * 但如果在行内表单和表单项内包裹了别的大组件，例如t-card这种也使用了--td-comp系列css变量的组件，则会被影响
+ * 但因为这种情况少之甚少，所以如果出现这种情况的话，在对应业务代码上使用style再次覆盖一下变量值就行了，例如给上述的t-card再次指定--td-comp系列变量
+ */
+.t-form-inline,
+.form-item-gap { // 或者用这个类名加到t-form-item上
+  --td-comp-paddingLR-xl: 16px;
+  --td-comp-margin-xxl: 16px;
+
+  &.thin-gap {
+    --td-comp-paddingLR-xl: 8px;
+    --td-comp-margin-xxl: 8px;
+  }
+}
+
+.ellipsis-1 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.main-box {
+  margin: 0 auto;
+  padding: 12px 12px;
+  max-width: 1224px;
+}

@@ -1,0 +1,584 @@
+/*
+    See the JupyterLab Developer Guide for useful CSS Patterns:
+
+    https://jupyterlab.readthedocs.io/en/stable/developer/css.html
+*/
+
+/*
+    dnd配置draggingContainer有bug
+    https://github.com/antvis/X6/issues/3978
+    有pr修复了但是dnd插件没有发布新版，懒得在本地patch修复了
+
+    所以dnd拖拽时会把临时cell渲染在body里，而不是cpw-container，所以只能把css变量设定在全局
+    并且cell的样式需要兼容在body和在画布中一致
+*/
+
+.ellipsis-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.t-dialog,
+.t-dialog *,
+.t-drawer,
+.t-drawer * {
+  box-sizing: border-box;
+}
+
+.t-dialog.full-content-dialog {
+  display: flex;
+  flex-direction: column;
+}
+
+.t-dialog.full-content-dialog .t-dialog__body {
+  flex: 1;
+  height: 0;
+}
+
+/* jupyter的样式给所有button设置了rd，给td的button重新设置一下 */
+.jp-ThemedContainer .t-button:not(.t-button--shape-round, .t-button--shape-circle) {
+  border-radius: var(--td-radius-default);
+}
+
+:root {
+  --td-font-size-body-medium: 13px !important;
+  --td-font-size-link-medium: 13px !important;
+  --td-font-size-mark-medium: 13px !important;
+  --td-font-size-title-small: 13px !important;
+  --td-font-family: var(--jp-ui-font-family) !important;
+  --td-font-family-medium: var(--jp-ui-font-family) !important;
+}
+
+/* .cpw-container { */
+:root {
+  --grid-bg-color: #f3f3f3;
+
+  --cell-bg-color: #fff;
+  --cell-border-color: #bcc4d0;
+  --cell-active-outline-color: #0052d9;
+  --cell-port-bg-color: #f3f3f3;
+
+  --line-color: #999;
+  --line-hover-color: #0052d9;
+
+  --aside-bg-color: #fff;
+  --dnd-category-bg-color: #fff;
+  --dnd-component-bg-color: #f9f9f9;
+  --dnd-highlight-bg-color: #f3f3f3;
+  --dnd-item-border-color: #eee;
+}
+
+:root[theme-mode='dark'] {
+  /* [data-jp-theme-light=false] .cpw-container { */
+  --grid-bg-color: #181818;
+
+  --cell-bg-color: #2c2c2c;
+  --cell-border-color: #6f6f6f;
+  --cell-active-outline-color: #4582e6;
+  --cell-port-bg-color: #181818;
+
+  --line-color: #acacac;
+  --line-hover-color: #4582e6;
+
+  --aside-bg-color: #111;
+  --dnd-category-bg-color: #212121;
+  --dnd-component-bg-color: #181818;
+  --dnd-highlight-bg-color: transparent;
+  --dnd-item-border-color: #424242;
+}
+
+.cpw-container {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+
+  --toolbar-height: 33px;
+  /* --toolbar-height: 41px; */
+  --dnd-width: 201px;
+  --cfg-width: 221px;
+}
+
+.cpw-container *:not(.jp-OutputArea, .jp-OutputArea *) {
+  box-sizing: border-box;
+}
+
+.cpw-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  column-gap: 8px;
+  padding: 0 4px;
+  /* line-height: 24px; */
+  height: var(--toolbar-height);
+  background-color: var(--jp-toolbar-background);
+  border-bottom: 1px solid var(--jp-toolbar-border-color);
+}
+
+.cpw-graph-warpper {
+  position: relative;
+  display: flex;
+  height: calc(100% - var(--toolbar-height));
+}
+
+.cpw-graph {
+  flex: 1;
+  height: 100%;
+}
+
+/* ----------------- dnd样式 -------------------- */
+.cpw-dnd {
+  flex-shrink: 0;
+  height: 100%;
+  width: var(--dnd-width);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--jp-toolbar-border-color);
+  overflow: hidden;
+  user-select: none;
+  background-color: var(--aside-bg-color);
+}
+
+.cpw-dnd[collapsed='true'] {
+  display: none;
+}
+
+.cpw-dnd .cpw-dnd-header {
+  padding: 6px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cpw-dnd .cpw-dnd-content {
+  flex: 1;
+  height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.cpw-dnd .cpw-dnd-category,
+.cpw-dnd .cpw-dnd-component {
+  height: 33px;
+  line-height: 32px;
+  /* margin-bottom: 1px; */
+  border-bottom: 1px solid var(--dnd-item-border-color);
+  cursor: pointer;
+}
+
+.cpw-dnd .cpw-dnd-category {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  padding: 0 8px 0 4px;
+  background-color: var(--dnd-category-bg-color);
+}
+
+.cpw-dnd .cpw-dnd-category .cpw-dnd-category-icon {
+  height: 16px;
+  width: 16px;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.cpw-dnd .cpw-dnd-category .cpw-dnd-category-icon[expanded='true'] {
+  transform: rotateZ(90deg);
+}
+
+.cpw-dnd .cpw-dnd-category .cpw-dnd-category-label {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cpw-dnd .cpw-dnd-category .cpw-dnd-category-count {
+  flex-shrink: 0;
+  color: var(--td-text-color-placeholder);
+}
+
+.cpw-dnd .cpw-dnd-component {
+  padding: 0 8px 0 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: var(--dnd-component-bg-color);
+}
+
+.cpw-dnd .cpw-dnd-component:hover {
+  background-color: var(--dnd-highlight-bg-color);
+}
+
+/* --------------- 节点样式。需要兼容dnd在拖拽时，临时节点会挂载在body里 ------------- */
+.cpw-cell-node {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  border: 1px solid var(--cell-border-color);
+  border-radius: 6px;
+  background-color: var(--cell-bg-color);
+  cursor: auto;
+}
+
+.cpw-cell-node * {
+  box-sizing: border-box;
+}
+
+.cpw-cell-node.cpw-cell-node-active {
+  outline: 2px solid var(--cell-active-outline-color);
+}
+
+.cpw-cell-node.cpw-cell-node-error {
+  background-color: var(--td-error-color-1);
+}
+
+.cpw-cell-node .cpw-node-name {
+  height: 100%;
+  flex: 1;
+  /* padding-right: 8px; */
+  margin-right: 8px;
+  line-height: 38px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  border-right: 1px solid var(--cell-border-color);
+}
+
+.cpw-cell-node .cpw-node-icon {
+  flex-shrink: 0;
+  height: 24px;
+  width: 24px;
+}
+
+/* ------------------- 右键菜单样式，右键菜单挂载在body上 ------------ */
+.cpw-contextmenu {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.cpw-contextmenu * {
+  box-sizing: border-box;
+}
+
+.cpw-contextmenu .cpw-contextmenu-item {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  column-gap: 8px;
+  padding: 0 8px;
+  font-size: 13px;
+  height: var(--item-height, 24px);
+  line-height: var(--item-height, 24px);
+  width: var(--item-width, 150px);
+}
+
+.cpw-contextmenu .cpw-contextmenu-item:hover {
+  background-color: var(--jp-layout-color2);
+}
+
+.cpw-contextmenu .cpw-contextmenu-item .cpw-contextmenu-item-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cpw-contextmenu .cpw-contextmenu-item .cpw-contextmenu-item-icon {
+  flex-shrink: 0;
+  height: var(--item-icon-size, 16px);
+  width: var(--item-icon-size, 16px);
+  line-height: 0;
+}
+
+/* .cpw-contextmenu .cpw-contextmenu-item .cpw-contextmenu-item-icon svg {
+  vertical-align: top;
+} */
+
+.cpw-contextmenu .cpw-contextmenu-divider {
+  margin: 4px 0;
+  height: 1px;
+  background-color: var(--jp-layout-color2);
+}
+
+/* ------------------- outputs渲染抽屉 -----------------------*/
+.cpw-outputs {
+  --header-height: 32px;
+  /* --resize-height: 200px; */
+  position: absolute;
+  bottom: 0;
+  left: var(--dnd-width);
+  right: var(--cfg-width);
+  border-top: 1px solid var(--jp-toolbar-border-color);
+  max-height: 100%;
+  min-height: calc(var(--header-height) + 1px);
+  height: calc(var(--header-height) + 1px);
+}
+
+.cpw-outputs[dnd-collapsed='true'] {
+  left: 0;
+}
+
+.cpw-outputs[cfg-collapsed='true'] {
+  right: 0;
+}
+
+.cpw-outputs[expanded='true'] {
+  height: calc(var(--resize-height, 200px) + 1px);
+}
+
+.cpw-outputs .cpw-outputs-header {
+  height: var(--header-height);
+  padding-bottom: 4px;
+  background-color: var(--jp-toolbar-background);
+}
+
+.cpw-outputs .cpw-outputs-header .cpw-outputs-header-resizer {
+  height: 4px;
+}
+
+.cpw-outputs[expanded='true'] .cpw-outputs-header .cpw-outputs-header-resizer {
+  cursor: ns-resize;
+  transition: background-color 200ms;
+}
+
+.cpw-outputs[expanded='true'] .cpw-outputs-header .cpw-outputs-header-resizer:hover {
+  background-color: var(--jp-layout-color3);
+}
+
+.cpw-outputs .cpw-outputs-header .cpw-outputs-header-content {
+  height: calc(100% - 4px);
+  padding: 0 8px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cpw-outputs .cpw-outputs-render {
+  display: none;
+  height: calc(100% - 28px);
+  padding: 16px;
+  background-color: var(--jp-layout-color0);
+  overflow: auto;
+  border-top: 1px solid var(--jp-toolbar-border-color);
+}
+
+.cpw-outputs[expanded='true'] .cpw-outputs-render {
+  display: block;
+}
+
+/* 不显示计数器区域 */
+.cpw-outputs .cpw-outputs-render .jp-OutputArea-prompt {
+  display: none;
+}
+
+/* ------------------- 右侧组件配置抽屉 -----------------------*/
+.cpw-cfg {
+  flex-shrink: 0;
+  height: 100%;
+  width: var(--cfg-width);
+  border-left: 1px solid var(--jp-toolbar-border-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--aside-bg-color);
+
+  --pd: 8px 12px;
+}
+
+.cpw-cfg[collapsed='true'] {
+  display: none;
+}
+
+.cpw-cfg .cpw-cfg-name {
+  border-bottom: 1px solid var(--jp-toolbar-border-color);
+  padding: var(--pd);
+  line-height: 16px;
+  background-color: var(--jp-toolbar-background);
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+.cpw-cfg .cpw-cfg-tabs {
+  display: flex;
+}
+
+.cpw-cfg .cpw-cfg-tab-item {
+  /* cursor: pointer;
+  line-height: 32px;
+  text-align: center;  */
+  flex: 1;
+  border-bottom: 1px solid var(--jp-toolbar-border-color);
+}
+
+.cpw-cfg .cpw-cfg-tab-item[active='true'] {
+  border-bottom-color: var(--td-brand-color);
+}
+
+.cpw-cfg .cpw-cfg-content {
+  padding: var(--pd);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.cpw-cfg .cpw-cfg-footer {
+  padding: var(--pd);
+}
+
+.cpw-cfg .cpw-cfg-empty-content {
+  padding-top: 4px;
+  text-align: center;
+  color: var(--td-text-color-secondary);
+  line-height: 22px;
+}
+
+.cpw-cfg .t-form.cpw-cfg-content .t-form__item:last-child .t-input__extra {
+  /* 避免最后一行表单校验绝对定位导致溢出滚动条 */
+  position: static;
+}
+
+/* ------------- 组件配置 ----------------- */
+.cpw-cell-editor-section {
+  display: flex;
+  margin-bottom: 24px;
+  color: var(--td-text-color-primary);
+}
+
+.cpw-cell-editor-section-label {
+  /* line-height: ; */
+  width: 120px;
+  flex-shrink: 0;
+  padding-right: 16px;
+}
+
+.cpw-cell-editor-section-content {
+  flex: 1;
+  width: 0;
+}
+
+.cpw-cell-editor-section-content .t-table .t-table__content {
+  border: 1px solid var(--td-component-border);
+  border-bottom: none;
+}
+
+.cpw-cell-editor-section-content .t-table .t-table__content th {
+  color: var(--td-text-color-secondary);
+  background-color: var(--td-bg-color-secondarycontainer);
+}
+
+.cpw-cell-editor-section-content .t-table .t-table__empty {
+  min-height: var(--empty-height, 57px);
+}
+
+.cpw-cell-editor-section-content .jp-CodeMirrorEditor {
+  border: 1px solid var(--td-component-border);
+  transition-property: border-color;
+  transition-duration: 200ms;
+}
+
+.cpw-cell-editor-section-content .jp-CodeMirrorEditor.jp-mod-focused {
+  border-color: var(--td-brand-color);
+}
+
+.cpw-cell-editor-section-content .jp-CodeMirrorEditor .cm-editor {
+  min-height: 150px;
+  max-height: 400px;
+  background-color: var(--jp-cell-editor-background);
+  transition-property: box-shadow, background-color;
+  transition-duration: 200ms;
+}
+
+.cpw-cell-editor-section-content .jp-CodeMirrorEditor.jp-mod-focused .cm-editor {
+  box-shadow: var(--jp-cell-editor-box-shadow);
+  background-color: var(--jp-cell-editor-active-background);
+}
+
+.cpw-cell-editor-section-content .jp-CodeMirrorEditor .cm-editor .cm-scroller {
+  overflow: auto;
+}
+
+/* ---------------- 数据集 --------------------- */
+.ds-container {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ds-container * {
+  box-sizing: border-box;
+}
+
+.ds-header {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  padding: 6px 8px;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.ds-list {
+  flex: 1;
+  height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-top: 1px solid var(--jp-toolbar-border-color);
+}
+
+.ds-cate {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  padding: 4px 4px 4px 8px;
+  background-color: var(--dnd-category-bg-color);
+  font-size: 1.077em;
+  line-height: 2em;
+  border-bottom: 1px solid var(--dnd-item-border-color);
+  cursor: pointer;
+}
+
+.ds-cate .ds-cate-icon {
+  height: 16px;
+  width: 16px;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.ds-cate .ds-cate-icon[expanded='true'] {
+  transform: rotateZ(90deg);
+}
+
+.ds-cate .ds-cate-label {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ds-file {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  padding: 4px 4px 4px 28px;
+  background-color: var(--dnd-component-bg-color);
+  border-bottom: 1px solid var(--dnd-item-border-color);
+}
+
+.ds-file-label {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ds-file:hover {
+  background-color: var(--dnd-highlight-bg-color);
+}

@@ -1,0 +1,30 @@
+{
+  "name": "查看前N行",
+  "category": "describe_data",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "num",
+      "desc": "前N行",
+      "required": true,
+      "name": "N",
+      "label": "N",
+      "default": null
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_1",
+      "desc": "DataFrame数据",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "前N行数据DataFrame",
+      "name": "n_data",
+      "label": "前N行数据"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "name": "多分类模型评估",
+  "category": "model_evaluation",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "desc": "数据集中作为X的列",
+      "required": true,
+      "name": "col_xs",
+      "label": "特征列",
+      "default": null
+    },
+    {
+      "type": "str",
+      "desc": "数据集中作为Y的列",
+      "required": true,
+      "name": "col_y",
+      "label": "选择预测列",
+      "default": null
+    },
+    {
+      "label": "其他指标",
+      "name": "method",
+      "type": "opt",
+      "desc": "",
+      "required": false,
+      "default": "micro",
+      "options": [
+        {
+          "label": "micro",
+          "value": "micro"
+        },
+        {
+          "label": "macro",
+          "value": "macro"
+        },
+        {
+          "label": "weighted",
+          "value": "weighted"
+        }
+      ]
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_model",
+      "desc": "模型",
+      "required": true,
+      "label": "输入模型"
+    },
+    {
+      "name": "in_data",
+      "desc": "原始数据",
+      "required": true,
+      "label": "原始数据"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "指标表",
+      "name": "output1",
+      "label": "指标表"
+    },
+    {
+      "desc": "预测结果",
+      "name": "pre_data",
+      "label": "预测结果"
+    },
+    {
+      "desc": "混淆矩阵",
+      "name": "cm",
+      "label": "混淆矩阵"
+    }
+  ]
+}

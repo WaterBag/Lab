@@ -1,0 +1,74 @@
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python / Django
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+pip-wheel-metadata/
+.tox/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+.pyre/
+.coverage
+.coverage.*
+*.log
+*.sqlite3
+
+# Django static/media (collected or user uploads)
+staticfiles/
+media/
+backend/staticfiles/
+backend/media/
+celerybeat.pid
+
+# Backend env files (keep examples only)
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.sample
+
+# Frontend (Vite / pnpm / tooling)
+**/node_modules/
+**/dist/
+**/build/
+**/.vite/
+**/.cache/
+**/.eslintcache
+**/.turbo/
+**/coverage/
+
+# Frontend env (keep sample)
+frontend/env/.env.local
+frontend/env/.env.*.local
+!frontend/env/.env.local.sample
+
+# Package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Misc
+*.pid
+*.seed
+*.orig
+*.rej

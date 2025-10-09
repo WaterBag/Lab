@@ -1,0 +1,30 @@
+{
+  "name": "图片数值化",
+  "category": "data_preprocessing",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "label": "图片列",
+      "name": "image_col",
+      "type": "str",
+      "default": "image",
+      "required": true,
+      "desc": ""
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_images",
+      "desc": "图片对象DataFrame",
+      "label": "图片DataFrame",
+      "required": true
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "图片列转化为numpy的DataFrame",
+      "name": "images",
+      "label": "图片DataFrame"
+    }
+  ]
+}

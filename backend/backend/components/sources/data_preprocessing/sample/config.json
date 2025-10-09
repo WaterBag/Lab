@@ -1,0 +1,38 @@
+{
+  "name": "采样",
+  "category": "data_preprocessing",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "num",
+      "desc": "采样N行数据",
+      "required": true,
+      "name": "N",
+      "label": "N",
+      "default": null
+    },
+    {
+      "type": "num",
+      "desc": "",
+      "required": false,
+      "name": "random_state",
+      "label": "随机数种子",
+      "default": null
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_1",
+      "desc": "DataFrame数据",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "采样后的数据DataFrame",
+      "name": "sample_data",
+      "label": "采样后的DataFrame"
+    }
+  ]
+}

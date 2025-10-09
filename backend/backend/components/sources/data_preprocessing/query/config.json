@@ -1,0 +1,30 @@
+{
+  "name": "行过滤",
+  "category": "data_preprocessing",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "desc": "pandas的python语法",
+      "required": true,
+      "name": "query_string",
+      "label": "查询表达式",
+      "default": ""
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_1",
+      "desc": "DataFrame数据",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "采样后的数据DataFrame",
+      "name": "query_data",
+      "label": "过滤后的DataFrame"
+    }
+  ]
+}

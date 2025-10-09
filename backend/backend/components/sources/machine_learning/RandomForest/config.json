@@ -1,0 +1,130 @@
+{
+  "name": "随机森林",
+  "category": "machine_learning",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "desc": "数据集中作为X的列",
+      "required": true,
+      "name": "col_x",
+      "label": "特征列",
+      "default": null
+    },
+    {
+      "type": "str",
+      "desc": "数据集中作为Y的列",
+      "required": true,
+      "name": "col_y",
+      "label": "选择预测列",
+      "default": null
+    },
+    {
+      "type": "opt",
+      "desc": "类型",
+      "required": true,
+      "name": "genre",
+      "label": "分析类型",
+      "default": "Classifier",
+      "options": [
+        {
+          "label": "分类",
+          "value": "Classifier"
+        },
+        {
+          "label": "回归",
+          "value": "Regressor"
+        }
+      ]
+    },
+    {
+      "type": "num",
+      "desc": "",
+      "required": false,
+      "name": "n_estimators",
+      "label": "迭代次数",
+      "default": 100
+    },
+    {
+      "type": "opt",
+      "desc": "最大特征数",
+      "required": true,
+      "name": "max_features",
+      "label": "最大特征数",
+      "default": "auto",
+      "options": [
+        {
+          "label": "auto",
+          "value": "'auto'"
+        },
+        {
+          "label": "sqrt",
+          "value": "'sqrt'"
+        },
+        {
+          "label": "log2",
+          "value": "'log2'"
+        },
+        {
+          "label": "None",
+          "value": "None"
+        }
+      ]
+    },
+    {
+      "type": "num",
+      "desc": "",
+      "required": false,
+      "name": "max_depth",
+      "label": "树最大深度",
+      "default": null
+    },
+    {
+      "type": "num",
+      "desc": "",
+      "required": false,
+      "name": "min_samples_leaf",
+      "label": "叶节点最少样本数",
+      "default": null
+    },
+    {
+      "type": "num",
+      "desc": "",
+      "required": false,
+      "name": "max_leaf_nodes",
+      "label": "最大叶节点数",
+      "default": null
+    },
+    {
+      "type": "bool",
+      "desc": "",
+      "required": false,
+      "name": "oob_score",
+      "label": "是否采用袋外样本",
+      "default": false
+    },
+    {
+      "type": "num",
+      "desc": "",
+      "required": false,
+      "name": "random_state",
+      "label": "随机数种子",
+      "default": null
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_1",
+      "desc": "DataFrame数据",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "训练后的随机森林模型",
+      "name": "rf",
+      "label": "随机森林模型"
+    }
+  ]
+}

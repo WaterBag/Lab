@@ -1,0 +1,76 @@
+/**
+ * 用于覆盖如组件库样式、组件库类名覆盖等 (不包括font)
+ */
+
+/**
+ * 把组件库样式覆盖写到body中，用css变量作用域覆盖掉组件库在:root上对应的声明
+ * 避免直接声明在:root时，可能由于加载顺序问题，没有如期覆盖组件库的css变量值声明
+ * 也避免了直接声明在:root时使用!important解决上述问题时，导致业务代码中再次覆盖变量不方便的问题
+ */
+ :root #app--jp-body {
+  --td-component-border: var(--border-color);
+  
+  --vxe-ui-font-color: var(--td-text-color-primary);
+  --vxe-ui-font-primary-color: #0052d9;
+  --vxe-ui-border-radius: 3px;
+
+  --vxe-ui-table-header-font-color: var(--td-text-color-secondary);
+  --vxe-ui-table-header-font-weight: normal;
+  --vxe-ui-table-border-color: var(--border-color);
+
+  --vxe-ui-table-header-background-color: #f3f3f3; // 表头bg
+  
+  --vxe-ui-table-row-hover-background-color: #f3f3f3; // 行hover时bg
+  --vxe-ui-table-row-striped-background-color: #f9f9f9; // 斑马纹bg
+  --vxe-ui-table-row-hover-striped-background-color: #f3f3f3; // 斑马纹hover时bg
+  --vxe-ui-table-row-current-background-color: #f4f8ff; // 选中行bg
+  --vxe-ui-table-row-hover-current-background-color: #e8f1ff; // 选中行hover时bg
+}
+
+#nprogress .bar {
+  // background: var(--td-brand-color) !important;
+  background: repeating-linear-gradient(
+    to right,
+    #0062fa 0%,
+    #ffbd2e 25%,
+    #ff454f 50%,
+    #ffbd2e 75%,
+    #0062fa 100%
+  ) !important;
+}
+
+* {
+  @include base-scroll;
+}
+
+a {
+  text-decoration: none;
+}
+
+.vxe-table--render-default .vxe-body--row {
+  transition: background-color 300ms;
+}
+
+// 当同时使用expand展开行，fixed固定列和show-overflow，会出现展开行的内容出现在固定列
+.vxe-table--body-wrapper.fixed-right--wrapper .vxe-body--expanded-row {
+  visibility: hidden;
+}
+
+.t-card {
+  line-height: inherit;
+  .t-card__header,
+  .t-card__body,
+  .t-card__footer {
+    padding: 16px;
+    line-height: inherit;
+  }
+}
+
+.t-cascader__menu{
+  width: fit-content !important;
+  min-width: 148px !important;
+}
+
+.t-cascader__item-label--ellipsis{
+  margin-right: 16px !important;
+}

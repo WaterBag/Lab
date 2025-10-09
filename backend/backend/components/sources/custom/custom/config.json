@@ -1,0 +1,21 @@
+{
+  "name": "自定义python脚本",
+  "category": "custom",
+  "genre": "common",
+  "paramsConfig": [],
+  "inputConfig": [
+    {
+      "name": "in_1",
+      "desc": "输入内容",
+      "label": "输入内容",
+      "required": true
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "输出内容",
+      "name": "out_data",
+      "label": "输出内容"
+    }
+  ]
+}

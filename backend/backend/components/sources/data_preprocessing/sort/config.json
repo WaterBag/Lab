@@ -1,0 +1,48 @@
+{
+  "name": "排序",
+  "category": "data_preprocessing",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "label": "选择列",
+      "name": "cols",
+      "type": "str",
+      "default": "",
+      "required": true,
+      "desc": "逗号分割"
+    },
+    {
+      "label": "排序方式",
+      "name": "sort_mode",
+      "type": "opt",
+      "default": "desc",
+      "required": true,
+      "desc": "",
+      "options": [
+        {
+          "label": "降序",
+          "value": "desc"
+        },
+        {
+          "label": "升序",
+          "value": "asc"
+        }
+      ]
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_data",
+      "desc": "DataFrame",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "排序后的DataFrame",
+      "name": "out_data",
+      "label": "排序后的DataFrame"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+/**
+ * 用于覆盖如组件库样式、组件库类名覆盖等 (不包括font)
+ */
+
+:root {
+  --td-radius-default: 4px !important;
+}
+
+.t-popup::-webkit-scrollbar {
+  background-color: #fff;
+}
+
+.t-input__prefix-icon .t-icon {
+  transition: color 300ms;
+}

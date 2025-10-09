@@ -1,0 +1,48 @@
+/**
+ * 此文件会被全局引入，作为scss变量和mixin
+ */
+
+@mixin base-scroll {
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-clip: content-box;
+    background-color: #d2d2d2;
+    border: 2px solid transparent;
+    &:hover {
+      background-color: #b6b2b2;
+    }
+  }
+  &::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-button  {
+    display: none
+  }
+}
+
+@mixin small-scroll {
+  @include base-scroll;
+  &::-webkit-scrollbar-thumb {
+    border-width: 2px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+// 文本溢出
+@mixin ellipsis($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @if $line == 1 {
+    white-space: nowrap;
+  } @else {
+    -webkit-line-clamp: $line;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+}

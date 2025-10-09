@@ -1,0 +1,19 @@
+@import url('./fonts.scss');
+@import url('./base.scss');
+@import url('./effects.scss');
+@import url('./patchs.scss');
+
+/**
+ * 此文件编写一些未分类的全局的类名，如工具类名
+ */
+
+
+// 指定该容器滚动条为细滚动条
+.--small-scroll {
+  @include small-scroll;
+}
+
+// 指定该容器隐藏滚动条
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}

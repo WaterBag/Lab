@@ -1,0 +1,62 @@
+{
+  "name": "散点图",
+  "category": "data_visualization",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "desc": "数据集中作为X轴的列",
+      "required": true,
+      "name": "col_x",
+      "label": "X轴",
+      "default": null
+    },
+    {
+      "type": "str",
+      "desc": "数据集中作为Y的列",
+      "required": true,
+      "name": "col_y",
+      "label": "Y轴",
+      "default": null
+    },
+    {
+      "type": "str",
+      "desc": "",
+      "required": false,
+      "name": "title",
+      "label": "标题",
+      "default": "Line Chart"
+    },
+    {
+      "type": "str",
+      "desc": "",
+      "required": false,
+      "name": "x_name",
+      "label": "X轴标题",
+      "default": "X Axis"
+    },
+    {
+      "type": "str",
+      "desc": "",
+      "required": false,
+      "name": "y_name",
+      "label": "Y轴标题",
+      "default": "Y Axis"
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "data_df",
+      "desc": "DataFrame数据",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "散点图",
+      "name": "plt",
+      "label": "散点图"
+    }
+  ]
+}

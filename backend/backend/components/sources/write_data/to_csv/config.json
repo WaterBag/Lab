@@ -1,0 +1,30 @@
+{
+  "name": "输出csv文件",
+  "category": "write_data",
+  "genre": "common",
+  "paramsConfig": [
+    {
+      "type": "str",
+      "desc": "文件路径",
+      "required": true,
+      "name": "file_path",
+      "default": "",
+      "label": "文件路径"
+    }
+  ],
+  "inputConfig": [
+    {
+      "name": "in_1",
+      "desc": "DataFrame数据",
+      "required": true,
+      "label": "输入DataFrame"
+    }
+  ],
+  "outputConfig": [
+    {
+      "desc": "CSV DataFrame",
+      "name": "table",
+      "label": "原CSV DataFrame"
+    }
+  ]
+}

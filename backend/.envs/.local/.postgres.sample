@@ -1,0 +1,6 @@
+# PostgreSQL container connection
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=backend
+POSTGRES_USER=debug
+POSTGRES_PASSWORD=debug

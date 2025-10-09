@@ -1,0 +1,76 @@
+/**
+ * 全局基础布局
+ */
+
+* {
+  @include base-scroll;
+}
+
+:root {
+  --layout-header-height: 56px;
+  --layout-footer-height: 85px;
+  
+  --layout-no-footer-content-height: calc(100dvh - var(--layout-header-height));
+  
+  --layout-content-min-height: calc(100dvh - var(--layout-header-height) - var(--layout-footer-height));
+  
+  // 响应式布局时，最小宽度
+  // min-width: calc(600px - 11px);
+  min-width: calc(1200px - 11px); // 未有小屏布局，先写死1200宽度下的表现
+
+  scroll-padding-top: var(--layout-header-height); // 锚点滚动避免被header遮挡
+}
+
+.main-box-responsive {
+  max-width: calc(1440px - 11px);
+  min-width: calc(1200px - 11px);
+  // min-width: calc(768px - 11px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// 内容区一个section的标题文本
+.common-section-title {
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 56px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+// 内容区一个section的统一大小
+.common-section {
+  @extend .main-box-responsive;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 0px) and (max-width: 767.9px) {
+  :root {
+    min-width: unset;
+    --layout-header-height: 48px;
+    --layout-footer-height: 68px;
+  }
+
+  .main-box-responsive {
+    min-width: unset;
+    max-width: unset;
+    // width: calc(768px - 11px);
+  }
+
+  .common-section-title {
+     font-size: 20px;
+     line-height: 28px;
+  }
+
+  .common-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+

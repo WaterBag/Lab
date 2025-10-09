@@ -1,0 +1,2 @@
+type HostEnvType = 'dev' | 'prod'
+
