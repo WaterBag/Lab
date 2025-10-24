@@ -90,3 +90,5 @@ See detailed [cookiecutter-django Heroku documentation](https://cookiecutter-dja
 ### Docker
 
 See detailed [cookiecutter-django Docker documentation](https://cookiecutter-django.readthedocs.io/en/latest/3-deployment/deployment-with-docker.html).
+
+2025.10.24 工作流学习实践
